@@ -2,12 +2,6 @@
  * Implementation A: Node.js HTTP Module
  * College Placement Management System
  * 
- * Requirements Met:
- * - Uses standard Node.js built-in modules ('http', 'url', 'fs', 'path')
- * - Manual route parsing & request/response handling
- * - Proper HTTP status codes (200, 404, 405, 500)
- * - Dynamic route handling via RegEx pattern matching
- * - No Express.js or Handlebars dependencies
  */
 
 const http = require('http');
