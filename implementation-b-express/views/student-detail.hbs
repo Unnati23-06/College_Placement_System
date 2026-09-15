@@ -1,0 +1,67 @@
+<div class="page-header">
+  <h1>Student Profile: {{student.name}}</h1>
+  <p>Detailed placement breakdown and academic metadata.</p>
+</div>
+
+<div class="detail-card">
+  <h2>Academic & Personal Information</h2>
+  <div class="detail-row">
+    <div class="detail-label">Student ID</div>
+    <div class="detail-value"><code>{{student.id}}</code></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Full Name</div>
+    <div class="detail-value"><strong>{{student.name}}</strong></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Branch / Specialization</div>
+    <div class="detail-value"><span class="meta-tag">{{student.branch}}</span></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Cumulative GPA</div>
+    <div class="detail-value">{{student.gpa}} / 10.0</div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Email Address</div>
+    <div class="detail-value"><a href="mailto:{{student.email}}">{{student.email}}</a></div>
+  </div>
+</div>
+
+<div class="detail-card">
+  <h2>Placement Record Status</h2>
+  <div class="detail-row">
+    <div class="detail-label">Status</div>
+    <div class="detail-value">
+      {{#ifEquals student.status "Placed"}}
+        <span class="badge badge-placed">Placed</span>
+      {{else}}
+        <span class="badge badge-unplaced">Unplaced</span>
+      {{/ifEquals}}
+    </div>
+  </div>
+  {{#ifEquals student.status "Placed"}}
+    <div class="detail-row">
+      <div class="detail-label">Placed Company</div>
+      <div class="detail-value">
+        <a href="/company/{{student.companyId}}"><strong>{{student.companyName}}</strong></a>
+      </div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Designated Role</div>
+      <div class="detail-value">{{student.role}}</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-label">Salary Package (CTC)</div>
+      <div class="detail-value"><strong style="color: var(--success-text);">{{student.packageOffered}}</strong></div>
+    </div>
+  {{else}}
+    <div class="detail-row">
+      <div class="detail-label">Note</div>
+      <div class="detail-value">Student is actively interviewing with prospective recruiting partners.</div>
+    </div>
+  {{/ifEquals}}
+</div>
+
+<div style="margin-top: 1.5rem;">
+  <a href="/students" class="btn btn-outline">&larr; Back to Students</a>
+</div>

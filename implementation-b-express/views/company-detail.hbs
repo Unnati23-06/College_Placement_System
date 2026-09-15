@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h1>{{company.name}} Details</h1>
+  <p>{{company.sector}} &bull; {{company.location}}</p>
+</div>
+
+<div class="detail-card">
+  <h2>Company Overview</h2>
+  <div class="detail-row">
+    <div class="detail-label">Company ID</div>
+    <div class="detail-value"><code>{{company.id}}</code></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Sector / Industry</div>
+    <div class="detail-value">{{company.sector}}</div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Headquarters / Location</div>
+    <div class="detail-value">{{company.location}}</div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Maximum CTC Offered</div>
+    <div class="detail-value"><strong>{{company.package}}</strong></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Eligible Branches</div>
+    <div class="detail-value">
+      {{#each company.eligibleBranches}}
+        <span class="meta-tag">{{this}}</span>
+      {{/each}}
+    </div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-label">Description</div>
+    <div class="detail-value">{{company.description}}</div>
+  </div>
+</div>
+
+<h2 style="margin-bottom: 1rem; color: var(--primary-color);">Offered Job Openings ({{companyJobs.length}})</h2>
+
+{{#if companyJobs.length}}
+  {{#each companyJobs}}
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3 class="card-title">{{this.title}}</h3>
+      <p class="card-subtitle">{{this.role}} &bull; <strong>Status:</strong> {{this.status}}</p>
+      <p><strong>Package:</strong> {{this.salary}} | <strong>Location:</strong> {{this.location}} | <strong>Type:</strong> {{this.type}}</p>
+      <p style="margin-top: 0.5rem;">{{this.description}}</p>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No current active job openings listed for this company.</p>
+{{/if}}
+
+<div style="margin-top: 1.5rem;">
+  <a href="/companies" class="btn btn-outline">&larr; Back to Companies</a>
+</div>

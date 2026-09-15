@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>Participating Recruiters & Companies</h1>
+  <p>List of all corporate partners actively hiring from our campus.</p>
+</div>
+
+<div class="card-grid">
+  {{#each companies}}
+    <div class="card">
+      <div>
+        <h3 class="card-title">{{this.name}}</h3>
+        <p class="card-subtitle"><strong>Sector:</strong> {{this.sector}}</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Location:</strong> {{this.location}}</p>
+        <p style="margin-bottom: 0.75rem;"><strong>Package Offered:</strong> <span style="color: var(--secondary-color); font-weight: bold;">{{this.package}}</span></p>
+        <div>
+          <strong>Eligible Branches:</strong><br>
+          {{#each this.eligibleBranches}}
+            <span class="meta-tag">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem;">
+        <a href="/company/{{this.id}}" class="btn" style="flex: 1;">Company Details</a>
+        <a href="/jobs/{{this.id}}" class="btn btn-outline" style="flex: 1;">View Jobs</a>
+      </div>
+    </div>
+  {{/each}}
+</div>

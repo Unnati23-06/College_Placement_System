@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1>Jobs Offered by {{filterName}}</h1>
+  <p>Showing recruitment listings and job profiles for this corporate partner.</p>
+</div>
+
+{{#if filteredJobs.length}}
+  {{#each filteredJobs}}
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <h3 class="card-title">{{this.title}}</h3>
+          {{#ifEquals this.status "Open"}}
+            <span class="badge badge-placed">Open</span>
+          {{else}}
+            <span class="badge badge-unplaced">Closed</span>
+          {{/ifEquals}}
+        </div>
+        <p class="card-subtitle"><strong>Company:</strong> {{this.companyName}} | <strong>Role:</strong> {{this.role}}</p>
+        <p><strong>Salary Package:</strong> <span style="color: var(--secondary-color); font-weight: bold;">{{this.salary}}</span></p>
+        <p><strong>Location:</strong> {{this.location}} | <strong>Employment Type:</strong> {{this.type}}</p>
+        <p style="margin-top: 0.75rem;">{{this.description}}</p>
+        <div style="margin-top: 0.75rem;">
+          <strong>Eligible Branches:</strong>
+          {{#each this.eligibleBranches}}
+            <span class="meta-tag">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <div class="detail-card">
+    <p>No specific jobs found offered by '{{filterName}}'.</p>
+  </div>
+{{/if}}
+
+<div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+  {{#if company}}
+    <a href="/company/{{company.id}}" class="btn">View {{company.name}} Profile</a>
+  {{/if}}
+  <a href="/companies" class="btn btn-outline">&larr; Back to All Companies</a>
+</div>

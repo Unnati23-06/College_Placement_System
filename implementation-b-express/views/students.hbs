@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h1>Registered Students Directory</h1>
+  <p>View placement records, branch allocations, and recruitment status of students.</p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student ID</th>
+      <th>Name</th>
+      <th>Branch</th>
+      <th>GPA</th>
+      <th>Status</th>
+      <th>Recruiting Company</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each students}}
+      <tr>
+        <td><code>{{this.id}}</code></td>
+        <td><strong>{{this.name}}</strong></td>
+        <td><span class="meta-tag">{{this.branch}}</span></td>
+        <td>{{this.gpa}}</td>
+        <td>
+          {{#ifEquals this.status "Placed"}}
+            <span class="badge badge-placed">Placed</span>
+          {{else}}
+            <span class="badge badge-unplaced">Unplaced</span>
+          {{/ifEquals}}
+        </td>
+        <td>
+          {{#if this.companyName}}
+            <strong>{{this.companyName}}</strong> ({{this.packageOffered}})
+          {{else}}
+            <em>N/A</em>
+          {{/if}}
+        </td>
+        <td>
+          <a href="/student/{{this.id}}" class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.8rem;">View Profile</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
