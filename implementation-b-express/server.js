@@ -2,13 +2,6 @@
  * Implementation B: Express.js + Handlebars (HBS)
  * College Placement Management System
  * 
- * Requirements Met:
- * - Express.js web application framework
- * - Dynamic route parameters (:id, :company)
- * - Handlebars (HBS) template engine with custom helpers
- * - Dynamic data passing to Handlebars templates
- * - Handled conditional formatting & loop iterations ({{#each}}, {{#ifEquals}})
- * - Static middleware for serving stylesheet assets
  */
 
 const express = require('express');
